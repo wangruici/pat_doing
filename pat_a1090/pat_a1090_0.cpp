@@ -55,6 +55,7 @@ int main(){
 	}
 	dfs_search(0,root_index);
 	double max_price=root_price*pow(1+r_percentage,max_depth);
+
 	printf("%.2lf %d",max_price,max_num);
 	return 0;
 }
