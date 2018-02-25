@@ -1,0 +1,40 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+HashTable	pat_a1041/pat_a1041_1.cpp	/^int a[100001],HashTable[10001]={0};$/;"	v
+HashTable	pat_a1048/pat_a1048_0.cpp	/^int HashTable[N];$/;"	v
+HashTable	pat_a1050/pat_a1050_0.cpp	/^bool HashTable[256];$/;"	v
+MAX_LEN	pat_a1050/pat_a1050_0.cpp	/^const int MAX_LEN=10005;$/;"	v
+N	pat_a1048/pat_a1048_0.cpp	/^const int N=1005;$/;"	v
+a	pat_a1041/pat_a1041_1.cpp	/^int a[100001],HashTable[10001]={0};$/;"	v
+cmp	pat_b1005/pat_b1005_0.cpp	/^bool cmp(int a,int b){$/;"	f	signature:(int a,int b)
+cmp	pat_b1043/error_pat_b1043_1.cpp	/^bool cmp(pair<string,int> r1,pair<string,int> r2){$/;"	f	signature:(pair<string,int> r1,pair<string,int> r2)
+dict	pat_b1043/pat_b1043_0.cpp	/^const char dict[dict_len]={'P'-'A',0,'T'-'A','e'-'a'+26,'s'-'a'+26,'t'-'a'+26};$/;"	v
+dict_len	pat_b1043/pat_b1043_0.cpp	/^const int dict_len=6;$/;"	v
+full_permutation	divide_and_conquer/full_permutation.cpp	/^full_permutation(const int * const initArray,bool* hashTable,const int initArraylen,\\$/;"	f	signature:(const int * const initArray,bool* hashTable,const int initArraylen,\ int *const resultArray,const int index )
+full_permutation	divide_and_conquer/full_permutation.cpp	/^void full_permutation(const int* const initArray,bool *hashTable,const int initArraylen\\$/;"	p	file:	signature:(const int* const initArray,bool *hashTable,const int initArraylen\ ,int *const resultArray,const int index)
+hashTo	pat_b1043/pat_b1043_0.cpp	/^hashTo(char c){$/;"	f	signature:(char c)
+main	divide_and_conquer/eight_queen_question.cpp	/^main(){$/;"	f	signature:()
+main	divide_and_conquer/full_permutation.cpp	/^main(){$/;"	f	signature:()
+main	pat_a1041/pat_a1041_0.cpp	/^main(){$/;"	f	signature:()
+main	pat_a1041/pat_a1041_1.cpp	/^int main(){$/;"	f	signature:()
+main	pat_a1048/pat_a1048_0.cpp	/^main(){$/;"	f	signature:()
+main	pat_a1050/pat_a1050_0.cpp	/^main(){$/;"	f	signature:()
+main	pat_b1005/pat_b1005_0.cpp	/^main(){$/;"	f	signature:()
+main	pat_b1043/error_pat_b1043_1.cpp	/^main(){$/;"	f	signature:()
+main	pat_b1043/pat_b1043_0.cpp	/^main(){$/;"	f	signature:()
+main	pat_b1047/pat_b1047_0.cpp	/^main(){$/;"	f	signature:()
+maxn	pat_b1043/pat_b1043_0.cpp	/^const int maxn=10010;$/;"	v
+order	pat_a1041/pat_a1041_0.cpp	/^int order[10001];$/;"	v
+ori_dict	pat_b1043/pat_b1043_0.cpp	/^const char ori_dict[dict_len]={'P','A','T','e','s','t'};$/;"	v
+printArray	divide_and_conquer/full_permutation.cpp	/^int printArray(T* array,int n){$/;"	f	signature:(T* array,int n)
+printArray2	divide_and_conquer/eight_queen_question.cpp	/^printArray2(int* array,int len){$/;"	f	signature:(int* array,int len)
+result	pat_b1043/pat_b1043_0.cpp	/^int result[60];$/;"	v
+s1	pat_a1050/pat_a1050_0.cpp	/^char s1[MAX_LEN],s2[MAX_LEN];$/;"	v
+s2	pat_a1050/pat_a1050_0.cpp	/^char s1[MAX_LEN],s2[MAX_LEN];$/;"	v
+solve_eight_queen_question	divide_and_conquer/eight_queen_question.cpp	/^solve_eight_queen_question(int* const result,int* const temp_arr,int index\\$/;"	f	signature:(int* const result,int* const temp_arr,int index\ ,const int n_queen,bool* const hashTable)
+solve_eight_queen_question	divide_and_conquer/eight_queen_question.cpp	/^solve_eight_queen_question(int* const result,int* const temp_arr,int index\\$/;"	p	file:	signature:(int* const result,int* const temp_arr,int index\ ,const int n_queen,bool* const hashTable)
+str	pat_b1043/pat_b1043_0.cpp	/^char str[maxn];$/;"	v
