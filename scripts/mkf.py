@@ -4,6 +4,7 @@ import re
 from bs4 import BeautifulSoup
 import requests
 import os
+import sys
 '''
 problem_order=a1020
 '''
@@ -51,8 +52,10 @@ def get_content(soup_segment):
             result=result+item.string
             ##########################################################
     return result
-
-problem_order=input("please input problem order:")
+if len(sys.argv)==1:
+    problem_order=input("please input problem order:")
+else:
+    problem_order=sys.argv[1]
 compile_sh="problem_order="+problem_order+"\n"+compile_sh_seg
 compile_sh_path="/home/ruici/workspace/c_c++/scripts/algorithm_log.sh"
 if problem_order[0]=='b':

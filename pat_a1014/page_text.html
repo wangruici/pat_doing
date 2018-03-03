@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>1014. Waiting in Line (30) | Programming Ability Test</title>
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="U+eLFdj9i/ojK43p1hPwlH8kC1Xx0SUjFwZcSN4SGaw=" name="csrf-token" />
+    <link href="/s/application-70953deae3fb7747ba7b1bca82481290.css" media="screen" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 8]><link href="/s/blueprint/ie-95046ca80744645e3475cae5890744b7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if lt IE 7]><link href="/s/custom_ie6-01f58d47daa14cae5a4d256ed3368756.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <script src="/s/application-354b0ac70ff1396b9748c0c4ce73eda3.js" type="text/javascript"></script>
+    <link rel="icon" href="/favicon.ico"/>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <!-- link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' -->
+  </head>
+  <body>
+    <div class="container">
+      <div id="pageHeader">
+  <div id="logo" class="lfloat">
+    <a href="/"><img alt="Logo" src="/images/logo.png" /></a>
+  </div>
+  <div id="headerInfo" class="rfloat">
+        <a href="/users/sign_in">[登录]</a>
+          <a href="/users/sign_up">[注册]</a>
+  </div>
+  <hr> 
+</div>
+
+
+      <div id="navibar" class="span-3">
+  <ul>
+    <li><a href="/">主页</a></li>
+
+    <li><a href="/contests">题目集</a></li>
+
+      <div id='psnavi'>
+        <ul>
+          <li><a href="/contests/pat-a-practise/information">基本信息</a></li>
+          <li><a href="/contests/pat-a-practise">题目列表</a></li>
+		  <li><a href="/contests/pat-a-practise/submissions?self=true">提交列表</a></li>
+            <li><a href="/contests/pat-a-practise/ranklist">排名</a></li>
+        </ul>
+      </div>
+
+
+    <li><a href="/help">帮助</a></li>
+  </ul>
+</div>
+
+
+
+      <div id="body" class="span-22 last">
+
+
+            <h1>1014. Waiting in Line (30)</h1>
+        <div id='problemInfo' class='rfloat'>
+  <div class='limit'>
+  <div class='key'>
+    时间限制
+  </div>
+  <div class='value'>
+    400 ms<br>
+  </div>
+</div>
+<div class='limit'>
+  <div class='key'>
+    内存限制
+  </div>
+  <div class='value'>
+    65536 kB<br>
+  </div>
+</div>
+<div class='limit'>
+  <div class='key'>
+    代码长度限制
+  </div>
+  <div class='value'>
+    16000 B<br>
+  </div>
+</div>
+
+
+
+  <div class='checker'>
+    <div class='key'>
+      判题程序
+    </div>
+    <div class='value'>
+      <span title='纯文本对比'>Standard</span>
+    </div>
+  </div>
+
+    <div class='key'>
+      作者
+    </div>
+    <div class='value'>
+      CHEN, Yue<br>
+    </div>
+</div>
+
+
+<div id='problemContent'>
+  <p>Suppose a bank has N windows open for service.  There is a yellow line in front of the windows which devides the waiting area into two parts.  The rules for the customers to wait in line are: </p>
+
+<ul>
+<li>The space inside the yellow line in front of each window is enough to contain a line with M customers.  Hence when all the N lines are full, all the customers after (and including) the (NM+1)st one will have to wait in a line behind the yellow line.
+<li>Each customer will choose the shortest line to wait in when crossing the yellow line.  If there are two or more lines with the same length, the customer will always choose the window with the smallest number.
+<li>Customer[i] will take T[i] minutes to have his/her transaction processed.
+<li>The first N customers are assumed to be served at 8:00am. 
+</ul>
+
+<p>Now given the processing time of each customer, you are supposed to tell the exact time at which a customer has his/her business done.</p>
+
+<p>For example, suppose that a bank has 2 windows and each window may have 2 customers waiting inside the yellow line.  There are 5 customers waiting with transactions taking 1, 2, 6, 4 and 3 minutes, respectively.  At 08:00 in the morning, customer<sub>1</sub> is served at window<sub>1</sub> while customer<sub>2</sub> is served at window<sub>2</sub>.  Customer<sub>3</sub> will wait in front of window<sub>1</sub> and customer<sub>4</sub> will wait in front of window<sub>2</sub>.  Customer<sub>5</sub> will wait behind the yellow line.</p>
+
+<p>At 08:01, customer<sub>1</sub> is done and customer<sub>5</sub> enters the line in front of window<sub>1</sub> since that line seems shorter now.  Customer<sub>2</sub> will leave at 08:02, customer<sub>4</sub> at 08:06, customer<sub>3</sub> at 08:07, and finally customer<sub>5</sub> at 08:10.</p>
+
+<p><b>Input</b></p>
+
+<p>Each input file contains one test case.  Each case starts with a line containing 4 positive integers: N (&lt=20, number of windows), M (&lt=10, the maximum capacity of each line inside the yellow line), K (&lt=1000, number of customers), and Q (&lt=1000, number of customer queries).</p>
+
+<p>The next line contains K positive integers, which are the processing time of the K customers.</p>
+
+<p>The last line contains Q positive integers, which represent the customers who are asking about the time they can have their transactions done.  The customers are numbered from 1 to K.</p>
+
+<p><b>Output</b></p>
+
+<p>For each of the Q customers, print in one line the time at which his/her transaction is finished, in the format HH:MM where HH is in [08, 17] and MM is in [00, 59].  Note that since the bank is closed everyday after 17:00, for those customers who cannot be served before 17:00, you must output "Sorry" instead.</p>
+
+<b>Sample Input</b><pre>
+2 2 7 5
+1 2 6 4 3 534 2
+3 4 5 6 7
+</pre>
+
+<b>Sample Output</b><pre>
+08:07
+08:06
+08:10
+17:00
+Sorry
+</pre>
+
+</div>
+
+<hr>
+
+
+
+
+
+
+
+      </div>
+
+      <div id="pageFooter" class="center">
+  <hr class="nomarginbottom">
+  <div id="footerContainer">
+    <div class="center">
+      版权所有 (C) 2011-2018 浙江大学计算机科学与技术学院
+    </div>
+  </div>
+</div>
+
+
+    </div>
+
+  </body>
+</html>
+
+<!--  -->
+
