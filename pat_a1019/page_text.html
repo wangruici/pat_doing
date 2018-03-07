@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>1019. General Palindromic Number (20) | Programming Ability Test</title>
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="zkk4ywxDCixyWGVLI8ul4+gk8oWMYTlErs2txytobPY=" name="csrf-token" />
+    <link href="/s/application-70953deae3fb7747ba7b1bca82481290.css" media="screen" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 8]><link href="/s/blueprint/ie-95046ca80744645e3475cae5890744b7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if lt IE 7]><link href="/s/custom_ie6-01f58d47daa14cae5a4d256ed3368756.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <script src="/s/application-354b0ac70ff1396b9748c0c4ce73eda3.js" type="text/javascript"></script>
+    <link rel="icon" href="/favicon.ico"/>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <!-- link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' -->
+  </head>
+  <body>
+    <div class="container">
+      <div id="pageHeader">
+  <div id="logo" class="lfloat">
+    <a href="/"><img alt="Logo" src="/images/logo.png" /></a>
+  </div>
+  <div id="headerInfo" class="rfloat">
+        <a href="/users/sign_in">[登录]</a>
+          <a href="/users/sign_up">[注册]</a>
+  </div>
+  <hr> 
+</div>
+
+
+      <div id="navibar" class="span-3">
+  <ul>
+    <li><a href="/">主页</a></li>
+
+    <li><a href="/contests">题目集</a></li>
+
+      <div id='psnavi'>
+        <ul>
+          <li><a href="/contests/pat-a-practise/information">基本信息</a></li>
+          <li><a href="/contests/pat-a-practise">题目列表</a></li>
+		  <li><a href="/contests/pat-a-practise/submissions?self=true">提交列表</a></li>
+            <li><a href="/contests/pat-a-practise/ranklist">排名</a></li>
+        </ul>
+      </div>
+
+
+    <li><a href="/help">帮助</a></li>
+  </ul>
+</div>
+
+
+
+      <div id="body" class="span-22 last">
+
+
+            <h1>1019. General Palindromic Number (20)</h1>
+        <div id='problemInfo' class='rfloat'>
+  <div class='limit'>
+  <div class='key'>
+    时间限制
+  </div>
+  <div class='value'>
+    400 ms<br>
+  </div>
+</div>
+<div class='limit'>
+  <div class='key'>
+    内存限制
+  </div>
+  <div class='value'>
+    65536 kB<br>
+  </div>
+</div>
+<div class='limit'>
+  <div class='key'>
+    代码长度限制
+  </div>
+  <div class='value'>
+    16000 B<br>
+  </div>
+</div>
+
+
+
+  <div class='checker'>
+    <div class='key'>
+      判题程序
+    </div>
+    <div class='value'>
+      <span title='纯文本对比'>Standard</span>
+    </div>
+  </div>
+
+    <div class='key'>
+      作者
+    </div>
+    <div class='value'>
+      CHEN, Yue<br>
+    </div>
+</div>
+
+
+<div id='problemContent'>
+  <p>A number that will be the same when it is written forwards or backwards is known as a Palindromic Number.  For example, 1234321 is a palindromic number.  All single digit numbers are palindromic numbers.
+</p>
+
+<p>Although palindromic numbers are most often considered in the decimal system, the concept of palindromicity can be applied to the natural numbers in any numeral system. Consider a number N &gt 0 in base b &gt= 2, where it is written in standard notation with k+1 digits a<sub>i</sub> as the sum of (a<sub>i</sub>b<sup>i</sup>) for i from 0 to k.  Here, as usual, 0 &lt= a<sub>i</sub> &lt b for all i and a<sub>k</sub> is non-zero. Then N is palindromic if and only if a<sub>i</sub> = a<sub>k-i</sub> for all i. Zero is written 0 in any base and is also palindromic by definition.
+</p>
+
+<p>Given any non-negative decimal integer N and a base b, you are supposed to tell if N is a palindromic number in base b.
+</p>
+
+<p><b>
+Input Specification:
+</b></p>
+
+<p>Each input file contains one test case. Each case consists of two non-negative numbers N and b, where 0 &lt= N &lt= 10<sup>9</sup> is the decimal number and 2 &lt= b &lt= 10<sup>9</sup>  is the base.  The numbers are separated by a space.
+</p>
+
+<p><b>
+Output Specification:
+</b></p>
+
+<p>For each test case, first print in one line "Yes" if N is a palindromic number in base b, or "No" if not.  Then in the next line, print N as the number in base b in the form "a<sub>k</sub> a<sub>k-1</sub> ... a<sub>0</sub>".  Notice that there must be no extra space at the end of output.
+</p>
+
+<b>Sample Input 1:</b><pre>
+27 2
+</pre>
+
+<b>Sample Output 1:</b><pre>
+Yes
+1 1 0 1 1
+</pre>
+
+<b>Sample Input 2:</b><pre>
+121 5
+</pre>
+
+<b>Sample Output 2:</b><pre>
+No
+4 4 1
+</pre>
+
+
+</div>
+
+<hr>
+
+
+
+
+
+
+
+      </div>
+
+      <div id="pageFooter" class="center">
+  <hr class="nomarginbottom">
+  <div id="footerContainer">
+    <div class="center">
+      版权所有 (C) 2011-2018 浙江大学计算机科学与技术学院
+    </div>
+  </div>
+</div>
+
+
+    </div>
+
+  </body>
+</html>
+
+<!--  -->
+
