@@ -1,0 +1,60 @@
+#include <cstdio>
+#include <cmath>
+#include <cstring>
+const int Msize=10010;
+bool hashTableUsing[Msize]={false};
+
+bool isPrime(int num){
+	if(num<=1) return false;
+	else{
+		for(int i=2;i<=sqrt(num);++i){
+			if(num%i==0) return false;
+		}
+		return true;
+	}
+}
+
+int getPrime(int num){
+	if(isPrime(num)){
+		return num;
+	}
+	else{
+		int i=1;
+		while(true){
+			if(i>=999999){
+				return 0;
+			}
+			if(isPrime(num+i)){
+				return num+i;
+			}
+		}
+	}
+}
+
+int main(){
+	memset(hashTableUsing,false,sizeof(hashTableUsing));
+	int table_size;
+	int count;
+	scanf("%d %d",&table_size,&count);
+	table_size=getPrime(table_size);
+	int temp;
+	for(int i=0;i<count;++i){
+		scanf("%d",&temp);
+		temp=temp%table_size;
+		if(hashTableUsing[temp]==false){
+			printf("%d",temp);
+			hashTableUsing[temp]=true;
+		}
+		else{
+			printf("-");
+		}
+		if(i!=count-1){
+			printf(" ");
+		}
+		else{
+			printf("\n");
+		}
+	}
+	return 0;
+}
+

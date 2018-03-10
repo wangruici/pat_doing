@@ -1,0 +1,65 @@
+#include <string>
+#include <iostream>
+using std::string;
+using std::cin;
+using std::cout;
+using std::endl;
+//该算法是错误的，会有一个测试点不能通过。
+//原因在于，该算法通过前两个输入来计算出suffix_word,这样将前两行给予了太多的特殊，会有很多问题无法处理
+//其中一个是，如果前两行确定的suffix_word为"abc",但是有一行输入的后缀为"bc",显然，
+//这种输入是有公共后缀的，但是处理不了
+//尽量避免将“等价的数据”特殊化处理
+int main(){
+	int num;
+	cin>>num;
+	string line1;
+	string line2;
+	cin.get();
+	getline(cin,line1);
+	getline(cin,line2);
+	int index=-1;
+	string suffix_word;
+	for(int i=line1.size()-1,j=line2.size()-1;\
+			i>=0&&j>=0;--i,--j){
+		if(line1[i]!=line2[j]){
+			index=i;
+			break;
+		}
+	}
+	if(index==(int)line1.size()-1){
+		cout<<"nai"<<endl;
+	}
+	else{
+		if(index==-1){
+			int len1=line1.size();
+			int len2=line2.size();
+			if(len1<len2){
+				suffix_word=line1;
+			}
+			else{
+				suffix_word=line2;
+			}
+		}
+		else{
+			suffix_word=line1.substr(index+1,line1.size()-index-1);
+		}
+		string temp_line;
+		for(int i=0;i<num-2;++i){
+			getline(cin,temp_line);
+			if(temp_line.size()<suffix_word.size()){
+				suffix_word="nai";
+				break;
+			}
+			else if(temp_line.substr(temp_line.size()-suffix_word.size(),\
+						suffix_word.size())!=suffix_word){
+				suffix_word="nai";
+				break;
+			}
+		}
+		if(suffix_word==""){
+			suffix_word="nai";
+		}
+		cout<<suffix_word<<endl;
+	}
+	return 0;
+}
