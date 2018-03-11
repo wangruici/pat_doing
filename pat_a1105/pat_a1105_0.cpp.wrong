@@ -1,0 +1,118 @@
+#include <utility>
+#include <vector>
+#include <algorithm>
+#include <iostream>
+using std::cin;
+using std::cout;
+using std::endl;
+using std::sqrt;
+using std::vector;
+using std::pair;
+using std::abs;
+using std::sort;
+pair<int,int> get_MN(int N){
+	pair<int,int> p;
+	vector<pair<int,int> > ans;
+	p.first=1;
+	p.second=N;
+	ans.push_back(p);
+	int l=sqrt(1.0*N);
+	for(int i=2;i<=l;++i){
+		if(N%i==0){
+			p.first=i;
+			p.second=N/i;
+			ans.push_back(p);
+		}
+	}
+	p=ans[0];
+	int m_minus_n=N-1;	
+	for(int i=1;i<(int)ans.size();++i){
+		if(m_minus_n>abs(ans[i].first-ans[i].second)){
+			m_minus_n=abs(ans[i].first-ans[i].second);
+			p=ans[i];
+		}
+	}
+	return p;
+}
+bool cmp(int a,int b){
+	return a>b;
+}
+
+int get_time(int N,int a,int b){
+	int time=0;
+	int sum=0;
+	while(sum<N){
+		sum=sum+2*(a+b-4*time)-4;
+		++time;
+	}
+	return time;
+}
+const int maxn=1000;
+int matrix_spirl[maxn][maxn];
+int matrix_spirl_add(int time,int hang_num,int lie_num,const vector<int> &ans){
+	int i=0;
+	int N=hang_num*lie_num;
+	for(int j=0;j<time;++j){
+		int p_i=j,p_j=j;
+		while(p_i<hang_num-j){
+			matrix_spirl[p_j][p_i]=ans[i++];
+			++p_i;
+		}
+		--p_i;
+		++p_j;
+		while(p_j<hang_num-j){
+			matrix_spirl[p_j][p_i]=ans[i++];
+			++p_j;
+		}
+		--p_j;
+		++p_i;
+		while(p_i>=j){
+			matrix_spirl[p_j][p_i]=ans[i++];
+			--p_i;
+		}
+		++p_i;
+		--p_j;
+		while(p_j>=(j+1)){
+			matrix_spirl[p_j][p_i]=ans[i++];
+			--p_j;
+		}
+		if(i>=N){
+			break;
+		}
+	}	
+}
+int main(){
+	int N;
+	cin>>N;
+	pair<int,int> p=get_MN(N);
+	int hang_num,lie_num;
+	if(p.first>p.second){
+		hang_num=p.first;
+		lie_num=p.second;
+	}
+	else{
+		hang_num=p.second;
+		lie_num=p.first;
+	}
+	vector<int> num;
+	int temp;
+	for(int i=0;i<N;++i){
+		cin>>temp;	
+		num.push_back(temp);
+	}
+	sort(num.begin(),num.end(),cmp);
+	cout<<hang_num<<" "<<lie_num<<endl;
+	int time=get_time(N,hang_num,lie_num);
+	matrix_spirl_add(time,hang_num,lie_num,num);
+	for(int i=0;i<hang_num;++i){
+		for(int j=0;j<lie_num;++j){
+			cout<<matrix_spirl[i][j];
+			if(j<lie_num-1){
+				cout<<" ";
+			}
+		}
+		cout<<endl;
+	}
+	cout<<time<<endl;
+	return 0;
+}

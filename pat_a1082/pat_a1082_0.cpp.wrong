@@ -1,0 +1,88 @@
+#include <cstdio>
+#include <string>
+#include <iostream>
+#include <map>
+#include <vector>
+using std::vector;
+using std::map;
+using std::string;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::flush;
+//注意空字符串应该打印什么
+map<int,string> han={{0,"ling"},{1,"yi"},{2,"er"},\
+	{3,"san"},{4,"si"},{5,"wu"},{6,"liu"},\
+	{7,"qi"},{8,"ba"},{9,"jiu"},{10,"shi"},{11,"Bai"},{12,"Qian"},\
+		{13,"Wan"},{14,"Yi"}};
+
+map<string,string> han1={{"0","ling"},{"1","yi"},{"2","er"},\
+	{"3","san"},{"4","si"},{"5","wu"},{"6","liu"},\
+	{"7","qi"},{"8","ba"},{"9","jiu"},{"10","shi"},{"11","Bai"},{"12","Qian"},\
+		{"13","Wan"},{"14","Yi"}};
+string print_Qian(string s){
+	string result;
+	string nullstring;
+	int zero_count=0;
+	for(int i=0;i<(int)s.size();++i){
+		if(s[i]!='0'){
+			break;
+		}
+		++zero_count;
+	}
+	if(zero_count==(int)s.size()){
+		result="";
+	}
+	int len=s.size();
+	//前导没有零
+	if(zero_count==0){
+		if(len==1){
+			result=han1[nullstring+s[0]];
+		}
+		else if(len==2){
+			result=han1[nullstring+s[0]]+han1["10"];
+			if(s[1]=='0'){
+				;
+			}
+			else{
+				result+=han1[nullstring+s[1]];
+			}
+		}
+		else if(len==3){
+			result=han1[nullstring+s[2]]+han1["11"];
+			if(s[1]=='0'&&s[0]=='0'){
+				;
+			}
+			else if(s[1]=='0'){
+				result=
+			}
+		}
+	}
+	//前导有零
+	else{
+	}
+		
+	return result;
+}
+
+string print_fu(string s){
+	string result="";
+	if(s=="-"){
+		result="fu";
+	}
+	else{
+		result="";
+	}
+	return result;
+}
+
+string print_yi(string s){
+	string result="";
+	if(s==""||s=="0"){
+		result="";
+	}
+	else{
+		result=han1[s]+han1["14"];
+	}
+	return result;
+}
