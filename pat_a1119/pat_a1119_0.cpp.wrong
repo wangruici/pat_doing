@@ -1,0 +1,110 @@
+#include <iostream>
+#include <vector>
+using std::vector;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::flush;
+const int maxn=40;
+void print_array(vector<int> &v){
+	for(int i=0;i<(int)v.size();++i){
+		printf("%d",v[i]);
+		if(i!=(int)v.size()-1){
+			printf(" ");
+		}
+	}
+	printf("\n");
+}
+struct Node{
+	int value;
+	int lchild;
+	int rchild;
+	Node(){
+		this->value=0;
+		this->lchild=-1;
+		this->rchild=-1;
+	}
+};
+int count=0;
+vector<int> temp_v;
+Node record_tree[maxn];
+Node tree[maxn];
+void inOrder_get(Node *record_tree,int root);
+void inOrder_get(Node *record_tree,int root){
+	if(root==-1){
+		return;	
+	}
+	inOrder_get(record_tree,record_tree[root].lchild);
+	temp_v.push_back(root);
+	inOrder_get(record_tree,record_tree[root].rchild);
+}
+void cpy_tree(){
+	for(int i=0;i<maxn;++i){
+		record_tree[i].value=tree[i].value;
+		record_tree[i].lchild=tree[i].lchild;
+		record_tree[i].rchild=tree[i].rchild;
+	}
+}
+bool flag=false;
+void get_postOrder(int root){
+	if(root==-1){
+		return;
+	}
+	get_postOrder(tree[root].lchild);
+	get_postOrder(tree[root].rchild);
+	temp_v.push_back(tree[root].value);
+}
+void get_ans(int index,vector<int> &postOrder){
+	if(index>=(int)postOrder.size()-1){
+		get_postOrder(0);
+		print_array(temp_v);
+		if(temp_v==postOrder){
+			if(!flag){
+				flag=true;
+				cpy_tree();
+			}
+			++count;
+		}
+		else{
+			;
+		}
+		temp_v.clear();
+		return;
+	}
+	tree[index].lchild=index+1;
+	get_ans(index+1,postOrder);
+	tree[index].lchild=-1;
+	tree[index].rchild=index+1;
+	get_ans(index+1,postOrder);	
+	tree[index].rchild=-1;
+}
+
+
+int main(){
+	int num;
+	cin>>num;
+	vector<int> postOrder;
+	int temp;
+	for(int i=0;i<num;++i){
+		cin>>tree[i].value;
+	}
+	for(int i=0;i<num;++i){
+		cin>>temp;
+		postOrder.push_back(temp);
+	}
+	temp_v.clear();
+	get_ans(0,postOrder);
+	temp_v.clear();
+	inOrder_get(record_tree,0);
+	if(count==1){
+		printf("Yes\n");
+	}
+	else{
+		printf("No\n");
+	}
+	print_array(temp_v);
+	return 0;
+
+}
+
+
