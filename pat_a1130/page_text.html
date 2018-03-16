@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>1130. Infix Expression (25) | Programming Ability Test</title>
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="zNlZX2SpbmiX8QUa+CceCgUVHfotFOdC7ugji2mcNDM=" name="csrf-token" />
+    <link href="/s/application-70953deae3fb7747ba7b1bca82481290.css" media="screen" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 8]><link href="/s/blueprint/ie-95046ca80744645e3475cae5890744b7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if lt IE 7]><link href="/s/custom_ie6-01f58d47daa14cae5a4d256ed3368756.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <script src="/s/application-354b0ac70ff1396b9748c0c4ce73eda3.js" type="text/javascript"></script>
+    <link rel="icon" href="/favicon.ico"/>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <!-- link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' -->
+  </head>
+  <body>
+    <div class="container">
+      <div id="pageHeader">
+  <div id="logo" class="lfloat">
+    <a href="/"><img alt="Logo" src="/images/logo.png" /></a>
+  </div>
+  <div id="headerInfo" class="rfloat">
+        <a href="/users/sign_in">[登录]</a>
+          <a href="/users/sign_up">[注册]</a>
+  </div>
+  <hr> 
+</div>
+
+
+      <div id="navibar" class="span-3">
+  <ul>
+    <li><a href="/">主页</a></li>
+
+    <li><a href="/contests">题目集</a></li>
+
+      <div id='psnavi'>
+        <ul>
+          <li><a href="/contests/pat-a-practise/information">基本信息</a></li>
+          <li><a href="/contests/pat-a-practise">题目列表</a></li>
+		  <li><a href="/contests/pat-a-practise/submissions?self=true">提交列表</a></li>
+            <li><a href="/contests/pat-a-practise/ranklist">排名</a></li>
+        </ul>
+      </div>
+
+
+    <li><a href="/help">帮助</a></li>
+  </ul>
+</div>
+
+
+
+      <div id="body" class="span-22 last">
+
+
+            <h1>1130. Infix Expression (25)</h1>
+        <div id='problemInfo' class='rfloat'>
+  <div class='limit'>
+  <div class='key'>
+    时间限制
+  </div>
+  <div class='value'>
+    400 ms<br>
+  </div>
+</div>
+<div class='limit'>
+  <div class='key'>
+    内存限制
+  </div>
+  <div class='value'>
+    65536 kB<br>
+  </div>
+</div>
+<div class='limit'>
+  <div class='key'>
+    代码长度限制
+  </div>
+  <div class='value'>
+    16000 B<br>
+  </div>
+</div>
+
+
+
+  <div class='checker'>
+    <div class='key'>
+      判题程序
+    </div>
+    <div class='value'>
+      <span title='纯文本对比'>Standard</span>
+    </div>
+  </div>
+
+    <div class='key'>
+      作者
+    </div>
+    <div class='value'>
+      CHEN, Yue<br>
+    </div>
+</div>
+
+
+<div id='problemContent'>
+  <p>Given a syntax tree (binary), you are supposed to output the corresponding infix expression, with parentheses reflecting the precedences of the operators.
+</p>
+
+<p><b>
+Input Specification:
+</b></p>
+
+<p>Each input file contains one test case.  For each case, the first line gives a positive integer N ( &lt;= 20 ) which is the total number of nodes in the syntax tree.  Then N lines follow, each gives the information of a node (the i-th line corresponds to the i-th node) in the format:
+</p>
+<p><b>
+data left_child right_child
+</b></p>
+<p>
+where <b>data</b> is a string of no more than 10 characters, <b>left_child</b> and <b>right_child</b> are the indices of this node's left and right children, respectively.  The nodes are indexed from 1 to N.  The NULL link is represented by -1.  The figures 1 and 2 correspond to the samples 1 and 2, respectively.
+</p>
+<table>
+<tr>
+<td><center><img src='http://nos.patest.cn/nh_ol5yyz6cr02.JPG'></center></td>
+<td><center><img src='http://nos.patest.cn/nh_ol5yyackpi3.JPG'></center></td>
+</tr>
+<tr>
+<td><center>Figure 1</center></td>
+<td><center>Figure 2</center></td>
+</tr>
+</table>
+<p><b>
+Output Specification:
+</b></p>
+
+<p>For each case, print in a line the infix expression, with parentheses reflecting the precedences of the operators.  Note that there must be no extra parentheses for the final expression, as is shown by the samples.  There must be no space between any symbols.
+</p>
+
+<b>Sample Input 1:</b><pre>
+8
+* 8 7
+a -1 -1
+* 4 1
++ 2 5
+b -1 -1
+d -1 -1
+- -1 6
+c -1 -1
+</pre>
+
+<b>Sample Output 1:</b><pre>
+(a+b)*(c*(-d))
+</pre>
+
+<b>Sample Input 2:</b><pre>
+8
+2.35 -1 -1
+* 6 1
+- -1 4
+% 7 8
++ 2 3
+a -1 -1
+str -1 -1
+871 -1 -1
+</pre>
+
+<b>Sample Output 2:</b><pre>
+(a*2.35)+(-(str%871))
+</pre>
+
+</div>
+
+<hr>
+
+
+
+
+
+
+
+      </div>
+
+      <div id="pageFooter" class="center">
+  <hr class="nomarginbottom">
+  <div id="footerContainer">
+    <div class="center">
+      版权所有 (C) 2011-2018 浙江大学计算机科学与技术学院
+    </div>
+  </div>
+</div>
+
+
+    </div>
+
+  </body>
+</html>
+
+<!--  -->
+

@@ -1,162 +1,181 @@
-#include <vector>
-#include <string>
-#include <queue>
-#include <iostream>
-#include <cstdio>
-#include <set>
-#include <cstring>
-#include <algorithm>
-using std::sort;
-using std::fill;
-using std::set;
-using std::priority_queue;
-using std::vector;
-using std::string;
-using std::cin;
-using std::cout;
-using std::endl;
-using std::flush;
-using std::queue;
-using std::max;
-using std::min;
-const int open_door=8*60*60;
-const int shut_door=21*60*60;
-const int max_customer=10010;
-struct Customer{
-	int arrive_time;
-	int vip_flag;
-	int need_time;
-	int serve_time;
-	int leave_time;
-	int table_index;
-	Customer(int arrive_time,int need_time,int vip_flag){
-		this->arrive_time=arrive_time;
-		this->need_time=need_time;
-		this->vip_flag=vip_flag;
-	}
-};
-
-bool
-sort_cmp_arrive(const Customer &c1,const Customer &c2){
-	return c1.arrive_time<c2.arrive_time;
+#include<cstdio>
+#include<cmath>
+#include<vector>
+#include<algorithm>
+using namespace std;
+const int K = 111;//窗口数
+const int INF = 1000000000;//无穷大
+struct Player
+{
+	int arriveTime, startTime, trainTime;//到达时间、训练开始时间及训练时长
+	bool isVIP;//是否是VIP球员
+}newPlayer;//临时存放新读入的球员
+struct Table
+{
+	int endTime, numServe;//当前占用该球桌的球员的结束时间及已训练的人数
+	bool isVIP;//是否是VIP球桌
+}table[K];//K个球桌
+vector<Player> player;//球员队列
+int convertTime(int h, int m, int s)
+{
+	return h * 3600 + m * 60 + s;//将时间转换为以s为单位，方便比较和计算
 }
-
-bool
-sort_cmp_serve(const Customer &c1,const Customer &c2){
-	return c1.serve_time<c2.serve_time;
+bool cmpArriveTime(Player a, Player b)
+{
+	return a.arriveTime < b.arriveTime;//按到达时间排序
 }
-
-struct get_next_leave{
-	bool
-	operator() (const Customer *c1,const Customer *c2){
-		if(c1->leave_time!=c2->leave_time){
-			return c1->leave_time>c2->leave_time;
-		}
-		else if(c1->table_index!=c2->table_index){
-			return c1->table_index>c2->table_index;
-		}
-		else{
-			return c1->vip_flag<c2->vip_flag;
-		}
-	}
-};
-
-		
-
-typedef priority_queue<Customer*,vector<Customer*> , get_next_leave > tableCon;
-
-vector<Customer> customer_queue;
-
-tableCon using_table;
-
-set<int> has_come_vip_index;
-
-set<int> vip_table_index;
-
-bool hasusing[max_customer]={false};
-
-void insert_using_table(tableCon &using_table,Customer* c,int customer_index,\
-		int table_index,int last_leave_time,bool hasusing[]){
-	int serve_time=max(last_leave_time,c->arrive_time);
-	c->serve_time=serve_time;
-	c->leave_time=c->serve_time+c->need_time;
-	c->table_index=table_index;
-	using_table.push(c);
-	hasusing[customer_index]=true;
+bool cmpStartTime(Player a, Player b)
+{
+	return a.startTime < b.startTime;//按开始时间排序
 }
-
-
-
-void insert_using_table(tableCon &using_table,Customer* c,int customer_index,\
-		int table_index,int laset_leave_time,bool hasusing[]);
-
-int main(){
-	int customer_num;
-	cin>>customer_num;
-	int HH,MM,SS,need_time,vip_flag;
-	for(int i=0;i<customer_num;++i){
-		scanf("%d:%d:%d %d %d",&HH,&MM,&SS,&need_time,&vip_flag);
-		if(need_time>120){
-			need_time=120;
+//编号VIP从当前VIP球员移到下一个VIP球员
+int nextVIPPlayer(int VIPi)
+{
+	VIPi++;//先将VIPi加1
+	while (VIPi < player.size() && player[VIPi].isVIP == 0)
+	{
+		VIPi++;//只要当前球员不是VIP，就让VIPi后移一位
+	}
+	return VIPi;//返回下一个VIP球员的ID
+}
+//将编号为tID的球桌分配给编号为pID的球员
+void allotTable(int pID, int tID)
+{
+	if (player[pID].arriveTime <= table[tID].endTime)//更新球员的开始时间
+	{
+		player[pID].startTime = table[tID].endTime;
+	}
+	else
+	{
+		player[pID].startTime = player[pID].arriveTime;
+	}
+	//该球桌的训练结束时间更新为新球员的结束时间，并让服务人数加1
+	table[tID].endTime = player[pID].startTime + player[pID].trainTime;
+	table[tID].numServe++;
+}
+int main()
+{
+	int n, k, m, VIPtable;
+	scanf("%d", &n);//球员数
+	int stTime = convertTime(8, 0, 0);//开门时间为8点
+	int edTime = convertTime(21, 0, 0);//关门时间为21点
+	for (int i = 0; i < n; i++)
+	{
+		int h, m, s, trainTime, isVIP;//时、分、秒、训练时长、是否是VIP球员
+		scanf("%d:%d:%d %d %d", &h, &m, &s, &trainTime, &isVIP);
+		newPlayer.arriveTime = convertTime(h, m, s);//到达时间
+		newPlayer.startTime = edTime;//开始时间初始化为21点
+		if (newPlayer.arriveTime >= edTime) continue;//21点及以后的直接排除
+		//训练时长
+		newPlayer.trainTime = trainTime <= 120 ? trainTime * 60 : 7200;
+		newPlayer.isVIP = isVIP;//是否是VIP
+		player.push_back(newPlayer);//将newPlayer加入到球员队列中
+	}
+	scanf("%d%d", &k, &m);//球桌数及VIP球桌数
+	for (int i = 1; i <= k; i++)
+	{
+		table[i].endTime = stTime;//当前训练结束时间为8点
+		table[i].numServe = table[i].isVIP = 0;//初始化numServe与isVIP
+	}
+	for (int i = 0; i < m; i++)
+	{
+		scanf("%d", &VIPtable);//VIP球桌编号
+		table[VIPtable].isVIP = 1;//记为VIP球桌
+	}
+	sort(player.begin(), player.end(), cmpArriveTime);//按到达时间排序
+	int i = 0, VIPi = -1;//i用来扫描所有球员，VIPi总是指向当前最前的VIP球员
+	VIPi = nextVIPPlayer(VIPi);//找到第一个VIP球员
+	while (i < player.size())//当前队列最前面的球员为i
+	{
+		int idx = -1, minEndTime = INF;//寻找最早能空闲的球桌
+		for (int j = 1; j <= k; j++)
+		{
+			if (table[j].endTime < minEndTime)
+			{
+				minEndTime = table[j].endTime;
+				idx = j;
+			}
 		}
-		customer_queue.push_back(Customer(HH*60*60+MM*60+SS,need_time*60,vip_flag));
-	}
-
-	int table_num,vip_table_num;
-	cin>>table_num>>vip_table_num;
-	int temp_vip_table;
-	for(int i=1;i<=vip_table_num;++i){
-		cin>>temp_vip_table;
-		vip_table_index.insert(temp_vip_table);
-	}
-	sort(customer_queue.begin(),customer_queue.end(),sort_cmp_arrive);
-
-	//p_front执行第一个没有使用桌子的人
-	//p_last指向最后一个排队的人
-	int p_front=0;
-	int p_last=0;
-	int not_use=customer_num;
-	//根据桌子的数目来选择初始队伍长度
-	p_last=customer_num-1;
-	queue<int > vip_queue;
-	for(int i=p_front;i<=p_last;++i){
-		if(customer_queue[i].vip_flag){
-			vip_queue.push(i);
+		//idx为最早空闲的球桌编号
+		if (table[idx].endTime >= edTime)break;//已经关门，直接break
+		if (player[i].isVIP == 1 && i < VIPi)
+		{
+			i++;//如果i号是VIP球员，但是VIPi>i,说明i号球员已经在训练
+			continue;
 		}
-	}
-	//将桌子全部填满
-	for(int i=1;i<=table_num;++i){
-		//是vip桌子
-/*
- * 
-void insert_using_table(tableCon &using_table,Customer* c,int customer_index,\
-		int table_index,int laset_leave_time,bool hasusing[]);
- */
-		if(vip_table_index.find(i)!=vip_table_index.end()){
-			if(!vip_queue.empty()){
-				int vip=vip_queue.front();
-				vip_queue.pop();
-				if(hasusing[vip]==false){
-					insert_using_table(using_table,&customer_queue[vip],vip,i,open_door,hasusing);
-					not_use--;
-					continue;
+		//以下按球桌是否是VIP、球员是否是VIP，进行4种情况讨论
+		if (table[idx].isVIP == 1)
+		{
+			if (player[i].isVIP == 1)//①球桌是VIP，球员是VIP
+			{
+				allotTable(i, idx);//将球桌idx分配给球员i
+				if (VIPi == i)VIPi = nextVIPPlayer(VIPi);//找到下一个VIP球员
+				i++;//i号球员开始训练，因此继续队列的下一个人
+			}
+			else
+			{//如果当前队首的VIP球员比该VIP球桌早，就把球桌idx分配给他
+				if (VIPi < player.size() && player[VIPi].arriveTime <= table[idx].endTime)
+				{
+					allotTable(VIPi, idx);//将球桌idx分配给球员i
+					VIPi = nextVIPPlayer(VIPi);//找到下一个VIP球员
+				}
+				else
+				{//队首VIP球员比该VIP球桌迟，仍然把球桌idx分配给球员i
+					allotTable(i, idx);//将球桌idx分配给球员i
+					i++;//i号球员开始训练，因此继续队列的下一个人
 				}
 			}
 		}
-		while(hasusing[p_front]!=false&&p_front<=p_last) ++p_front;
-	
-		insert_using_table(using_table,&customer_queue[p_front],p_front,i,open_door,hasusing);
-		not_use--;
-		++p_front;
+		else
+		{
+			if (player[i].isVIP == 0)//③球桌不是VIP，球员不是VIP
+			{
+				allotTable(i, idx);//将球桌idx分配给球员i
+				i++;//i号球员开始训练，因此继续队列的下一个人
+			}
+			else
+			{//④球桌不是VIP，球员是VIP
+				//找到最早空闲的VIP球桌
+				int VIPidx = -1, minVIPEndTime = INF;
+				for (int j = 1; j <= k; j++)
+				{
+					if (table[j].isVIP == 1 && table[j].endTime < minVIPEndTime)
+					{
+						minVIPEndTime = table[j].endTime;
+						VIPidx = j;
+					}
+				}
+				//最早空闲的VIP球桌编号是VIPidx
+				if (VIPidx != -1 && player[i].arriveTime >= table[VIPidx].endTime)
+				{//如果VIP球桌存在，且空闲时间比球员来的时间早
+				//就把它分配给球员i
+					allotTable(i, VIPidx);
+					if (VIPi == i)VIPi = nextVIPPlayer(VIPi);//找到下一个VIP球员
+					i++;//i号球员开始训练，因此继续队列的下一个人
+				}
+				else
+				{
+					//如果球员来时VIP球桌还未空闲，就把球桌idx分配给他
+					allotTable(i, idx);
+					if (VIPi == i)VIPi = nextVIPPlayer(VIPi);//找到下一个VIP球员
+					i++;//i号球员开始训练，因此继续队列的下一个人
+				}
+			}
+		}
 	}
-
-	while(not_use>0){
-		Customer *front_index=using_table.top();
-		using_table.pop();
-		while()
+	sort(player.begin(), player.end(), cmpStartTime);//按开始时间排序
+	for (int i = 0; i < player.size() && player[i].startTime < edTime; i++)//输出
+	{
+		int t1 = player[i].arriveTime;
+		int t2 = player[i].startTime;
+		printf("%02d:%02d:%02d ", t1 / 3600, t1 % 3600 / 60, t1 % 60);
+		printf("%02d:%02d:%02d ", t2 / 3600, t2 % 3600 / 60, t2 % 60);
+		printf("%.0f\n", round((t2 - t1) / 60.0));
 	}
-
-	int not_use=customer_num;
-
+	for (int i = 1; i <= k; i++)
+	{
+		printf("%d", table[i].numServe);
+		if (i < k)printf(" ");
+	}
 	return 0;
 }

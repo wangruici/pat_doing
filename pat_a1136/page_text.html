@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>1136. A Delayed Palindrome (20) | Programming Ability Test</title>
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="6ZwCB5k4f12gZrcfV+bgJq6raRpQhbX0dQwaWg2Q8x8=" name="csrf-token" />
+    <link href="/s/application-70953deae3fb7747ba7b1bca82481290.css" media="screen" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 8]><link href="/s/blueprint/ie-95046ca80744645e3475cae5890744b7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if lt IE 7]><link href="/s/custom_ie6-01f58d47daa14cae5a4d256ed3368756.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <script src="/s/application-354b0ac70ff1396b9748c0c4ce73eda3.js" type="text/javascript"></script>
+    <link rel="icon" href="/favicon.ico"/>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <!-- link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' -->
+  </head>
+  <body>
+    <div class="container">
+      <div id="pageHeader">
+  <div id="logo" class="lfloat">
+    <a href="/"><img alt="Logo" src="/images/logo.png" /></a>
+  </div>
+  <div id="headerInfo" class="rfloat">
+        <a href="/users/sign_in">[登录]</a>
+          <a href="/users/sign_up">[注册]</a>
+  </div>
+  <hr> 
+</div>
+
+
+      <div id="navibar" class="span-3">
+  <ul>
+    <li><a href="/">主页</a></li>
+
+    <li><a href="/contests">题目集</a></li>
+
+      <div id='psnavi'>
+        <ul>
+          <li><a href="/contests/pat-a-practise/information">基本信息</a></li>
+          <li><a href="/contests/pat-a-practise">题目列表</a></li>
+		  <li><a href="/contests/pat-a-practise/submissions?self=true">提交列表</a></li>
+            <li><a href="/contests/pat-a-practise/ranklist">排名</a></li>
+        </ul>
+      </div>
+
+
+    <li><a href="/help">帮助</a></li>
+  </ul>
+</div>
+
+
+
+      <div id="body" class="span-22 last">
+
+
+            <h1>1136. A Delayed Palindrome (20)</h1>
+        <div id='problemInfo' class='rfloat'>
+  <div class='limit'>
+  <div class='key'>
+    时间限制
+  </div>
+  <div class='value'>
+    400 ms<br>
+  </div>
+</div>
+<div class='limit'>
+  <div class='key'>
+    内存限制
+  </div>
+  <div class='value'>
+    65536 kB<br>
+  </div>
+</div>
+<div class='limit'>
+  <div class='key'>
+    代码长度限制
+  </div>
+  <div class='value'>
+    16000 B<br>
+  </div>
+</div>
+
+
+
+  <div class='checker'>
+    <div class='key'>
+      判题程序
+    </div>
+    <div class='value'>
+      <span title='纯文本对比'>Standard</span>
+    </div>
+  </div>
+
+    <div class='key'>
+      作者
+    </div>
+    <div class='value'>
+      CHEN, Yue<br>
+    </div>
+</div>
+
+
+<div id='problemContent'>
+  <p>Consider a positive integer N written in standard notation with k+1 digits a<sub>i</sub> as a<sub>k</sub>...a<sub>1</sub>a<sub>0</sub> with 0 &lt;= a<sub>i</sub> &lt; 10 for all i and a<sub>k</sub> &gt; 0. Then N is <b>palindromic</b> if and only if a<sub>i</sub> = a<sub>k-i</sub> for all i. Zero is written 0 and is also palindromic by definition.
+</p>
+<p>
+Non-palindromic numbers can be paired with palindromic ones via a series of operations. First, the non-palindromic number is reversed and the result is added to the original number. If the result is not a palindromic number, this is repeated until it gives a palindromic number. Such number is called <b>a delayed palindrome</b>. (Quoted from https://en.wikipedia.org/wiki/Palindromic_number)
+</p>
+<p>
+Given any positive integer, you are supposed to find its paired palindromic number.
+</p>
+
+<p><b>
+Input Specification:
+</b></p>
+
+<p>Each input file contains one test case which gives a positive integer no more than 1000 digits.</p>
+
+<p><b>
+Output Specification:
+</b></p>
+
+<p>For each test case, print line by line the process of finding the palindromic number.  The format of each line is the following:</p><pre>
+A + B = C
+</pre>
+<p>
+where A is the original number, B is the reversed A, and C is their sum.  A starts being the input number, and this process ends until C becomes a palindromic number -- in this case we print in the last line "C is a palindromic number."; or if a palindromic number cannot be found in 10 iterations, print "Not found in 10 iterations." instead.
+</p>
+
+<b>Sample Input 1:</b><pre>
+97152
+</pre>
+
+<b>Sample Output 1:</b><pre>
+97152 + 25179 = 122331
+122331 + 133221 = 255552
+255552 is a palindromic number.
+</pre>
+
+<b>Sample Input 2:</b><pre>
+196
+</pre>
+
+<b>Sample Output 2:</b><pre>
+196 + 691 = 887
+887 + 788 = 1675
+1675 + 5761 = 7436
+7436 + 6347 = 13783
+13783 + 38731 = 52514
+52514 + 41525 = 94039
+94039 + 93049 = 187088
+187088 + 880781 = 1067869
+1067869 + 9687601 = 10755470
+10755470 + 07455701 = 18211171
+Not found in 10 iterations.
+</pre>
+
+</div>
+
+<hr>
+
+
+
+
+
+
+
+      </div>
+
+      <div id="pageFooter" class="center">
+  <hr class="nomarginbottom">
+  <div id="footerContainer">
+    <div class="center">
+      版权所有 (C) 2011-2018 浙江大学计算机科学与技术学院
+    </div>
+  </div>
+</div>
+
+
+    </div>
+
+  </body>
+</html>
+
+<!--  -->
+
