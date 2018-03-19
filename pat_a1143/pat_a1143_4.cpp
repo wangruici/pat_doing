@@ -1,3 +1,11 @@
+/*
+ *这个版本是在edit-0的基础上修改的
+ *修改了getLow函数
+ *算法是将两个节点提升到同一高度，然后在同时提升
+ *经过这样的修改就不会run out of time了
+ *
+ *
+ */
 #include <iostream>
 #include <string>
 #include <unordered_set>
