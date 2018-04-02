@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>1146. Topological Order (25) | Programming Ability Test</title>
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="ijY37kE7m9h70KoU4PegqVmwtbpGWJ0MTaFgCqdAwmE=" name="csrf-token" />
+    <link href="/s/application-70953deae3fb7747ba7b1bca82481290.css" media="screen" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 8]><link href="/s/blueprint/ie-95046ca80744645e3475cae5890744b7.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if lt IE 7]><link href="/s/custom_ie6-01f58d47daa14cae5a4d256ed3368756.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <script src="/s/application-4a3aea884550328696fb2975e261b2f0.js" type="text/javascript"></script>
+    <link rel="icon" href="/favicon.ico"/>
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <!-- link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' -->
+  </head>
+  <body>
+    <div class="container">
+      <div id="pageHeader">
+  <div id="logo" class="lfloat">
+    <a href="/"><img alt="Logo" src="/images/logo.png" /></a>
+  </div>
+  <div id="headerInfo" class="rfloat">
+        <a href="/users/sign_in">[登录]</a>
+          <a href="/users/sign_up">[注册]</a>
+  </div>
+  <hr> 
+</div>
+
+
+      <div id="navibar" class="span-3">
+  <ul>
+    <li><a href="/">主页</a></li>
+
+    <li><a href="/contests">题目集</a></li>
+
+      <div id='psnavi'>
+        <ul>
+          <li><a href="/contests/pat-a-practise/information">基本信息</a></li>
+          <li><a href="/contests/pat-a-practise">题目列表</a></li>
+		  <li><a href="/contests/pat-a-practise/submissions?self=true">提交列表</a></li>
+            <li><a href="/contests/pat-a-practise/ranklist">排名</a></li>
+        </ul>
+      </div>
+
+
+    <li><a href="/help">帮助</a></li>
+  </ul>
+</div>
+
+
+
+      <div id="body" class="span-22 last">
+
+
+            <h1>1146. Topological Order (25)</h1>
+        <div id='problemInfo' class='rfloat'>
+  <div class='limit'>
+  <div class='key'>
+    时间限制
+  </div>
+  <div class='value'>
+    200 ms<br>
+  </div>
+</div>
+<div class='limit'>
+  <div class='key'>
+    内存限制
+  </div>
+  <div class='value'>
+    65536 kB<br>
+  </div>
+</div>
+<div class='limit'>
+  <div class='key'>
+    代码长度限制
+  </div>
+  <div class='value'>
+    16000 B<br>
+  </div>
+</div>
+
+
+
+  <div class='checker'>
+    <div class='key'>
+      判题程序
+    </div>
+    <div class='value'>
+      <span title='纯文本对比'>Standard</span>
+    </div>
+  </div>
+
+    <div class='key'>
+      作者
+    </div>
+    <div class='value'>
+      CHEN, Yue<br>
+    </div>
+</div>
+
+
+<div id='problemContent'>
+  <p>This is a problem given in the Graduate Entrance Exam in 2018: Which of the following is NOT a topological order obtained from the given directed graph?  Now you are supposed to write a program to test each of the options.
+</p>
+
+<center><img src='http://nos.patest.cn/qp_p5m3xdiy3a6.jpg'></center>
+
+<p><b>
+Input Specification:
+</b></p>
+
+<p>Each input file contains one test case.  For each case, the first line gives two positive integers N (&lt;= 1,000), the number of vertices in the graph, and M (&lt;= 10,000), the number of directed edges.  Then M lines follow, each gives the start and the end vertices of an edge.  The vertices are numbered from 1 to N.  After the graph, there is another positive integer K (&lt;= 100).  Then K lines of query follow, each gives a permutation of all the vertices.  All the numbers in a line are separated by a space.
+</p>
+
+<p><b>
+Output Specification:
+</b></p>
+
+<p>Print in a line all the indices of queries which correspond to "NOT a topological order".  The indices start from zero.  All the numbers are separated by a space, and there must no extra space at the beginning or the end of the line.  It is graranteed that there is at least one answer.</p>
+
+
+<b>Sample Input:</b><pre>
+6 8
+1 2
+1 3
+5 2
+5 4
+2 3
+2 6
+3 4
+6 4
+5
+1 5 2 3 6 4
+5 1 2 6 3 4
+5 1 2 3 6 4
+5 2 1 6 3 4
+1 2 3 4 5 6
+</pre>
+
+<b>Sample Output:</b><pre>
+3 4
+</pre>
+
+</div>
+
+<hr>
+
+
+
+
+
+
+
+      </div>
+
+      <div id="pageFooter" class="center">
+  <hr class="nomarginbottom">
+  <div id="footerContainer">
+    <div class="center">
+      版权所有 (C) 2011-2018 浙江大学计算机科学与技术学院
+    </div>
+  </div>
+</div>
+
+
+    </div>
+
+  </body>
+</html>
+
+<!--  -->
+
