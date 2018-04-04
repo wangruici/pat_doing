@@ -41,27 +41,7 @@ int main(){
 		}
 		else{
 			dp[i]=dp[i-1]+array[i];
-		}
-/*
-		if(dp[i-1]>0){
-			dp[i]=dp[i-1]+array[i];
-			state[i]=state[i-1];
-		}
-		else{
-			dp[i]=array[i];
-			state[i]=i;
-		}
-*/
-/*
-		if(dp[i-1]<=0){
-			dp[i]=array[i];
-			state[i]=i;
-		}
-		else{
-			dp[i]=dp[i-1]+array[i];
-			state[i]=state[i-1];
-		}
-*/		
+		}		
 	}
 	int max=-99999999;
 	int end_lo=-1;
@@ -76,16 +56,6 @@ int main(){
 		max-=array[temp--];	
 	}
 	cout<<dp[end_lo]<<" "<<array[temp+1]<<" "<<array[end_lo]<<endl;
-/*
-	int k=0;
-	for(int i=1;i<count;++i){
-		if(dp[i]>dp[k]){
-			k=i;
-		}
-	}
-
-	cout<<dp[k]<<" "<<array[state[k]]<<" "<<array[k]<<endl;
-*/
 	return 0;
 }
 

@@ -36,24 +36,6 @@ int main(){
 	}
 	dp[0]=array[0];
 	for(int i=1;i<count;++i){
-		/*
-		if(dp[i-1]<=0){
-			dp[i]=array[i];
-		}
-		else{
-			dp[i]=dp[i-1]+array[i];
-		}
-		*/
-/*
-		if(dp[i-1]>0){
-			dp[i]=dp[i-1]+array[i];
-			state[i]=state[i-1];
-		}
-		else{
-			dp[i]=array[i];
-			state[i]=i;
-		}
-*/
 		if(dp[i-1]<=0){
 			dp[i]=array[i];
 			state[i]=i;
