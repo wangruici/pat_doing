@@ -1,10 +1,10 @@
-# PAT_A1010. Radix (25)
+
+
+# PAT_A1010. Radix(25)
 
 [TOC]
 
-
-
-## 1. Abstraction
+## 1.Abstraction
 
 ### 1.1 Algorithm and idea
 
@@ -21,7 +21,65 @@
 	由于radix是严格递增的，所以可以使用二分查找。如果暴力求解会超时。
 ```
 
-#### 1.1.1 进制转换
+### 1.2 Notice
+
+```
+1.越界问题。题目没有完全明确给出一些问题。比如，原始数据不可能越界，但是经过进制转换之后就会发生越界。
+	比如
+		a b 1 1不会超过long long
+		b在运算过程中可能发生越界的问题
+2.给定一个数据a,如果a的某一为最大为x，那么实际上a的进制，最小不能小于x+1。要注意处理。
+```
+
+
+
+## 2.Problem:Radix
+
+Given a pair of positive integers, for example, 6 and 110, can this equation 6 = 110 be true?  The answer is "yes", if 6 is a decimal number and 110 is a binary number.
+
+Now for any pair of positive integers N1 and N2, your task is to find the radix of one number while that of the other is given.
+
+**Input Specification:**
+
+Each input file contains one test case. Each case occupies a line which contains 4 positive integers:
+N1 N2 tag radix
+Here N1 and N2 each has no more than 10 digits.  A digit is less than 
+its radix and is chosen from the set {0-9, a-z} where 0-9 represent the 
+decimal numbers 0-9, and a-z represent the decimal numbers 10-35.  The 
+last number "radix" is the radix of N1 if "tag" is 1, or of N2 if "tag" 
+is 2. 
+
+**Output Specification:**
+
+For each test case, print in one line the radix of the other number so that the equation N1 = N2 is true.  If the equation is impossible, print "Impossible".  If the solution is not unique, output the smallest possible radix.
+
+Sample Input 1:
+
+```
+6 110 1 10
+```
+
+Sample Output 1:
+
+```
+2
+```
+
+Sample Input 2:
+
+```
+1 ab 1 2
+```
+
+Sample Output 2:
+
+```
+Impossible
+```
+
+## 3.Algorithm note
+
+### 3.1进制转换
 
 ```C++
 	string snum;//snum中储存了初始的数据
@@ -32,9 +90,7 @@
 	}
 ```
 
-
-
-#### 1.1.2 二分查找算法
+### 3.2二分查找算法
 
 二分查找算法主要有两种模板。两种模板的二分区间都为闭区间
 
@@ -44,7 +100,7 @@
 
 两种模板应该理解并且熟练掌握。
 
-##### 要点
+#### 3.2.1要点
 
 1.左右界的剔除与返回值的关系
 
@@ -54,7 +110,7 @@
 
 4.后面给出的low_bound和upper_bound在标准库中都有
 
-##### 精确查找
+#### 3.2.2精确查找
 
 ```C++
 //A[]为严格递增序列，left为二分下界，right为二分上界，x为欲查找的数值
@@ -80,7 +136,9 @@ int binarySearch(int A[],int left,int right,int x){
 }
 ```
 
-##### 模糊查找
+
+
+#### 3.2.3模糊查找
 
 ```C++
 int solve(int left,int right){
@@ -136,79 +194,25 @@ int upper_bound(int A[],int left,int right,int x){
 }
 ```
 
-### 1.2 Notice
-
-```
-1.越界问题。题目没有完全明确给出一些问题。比如，原始数据不可能越界，但是经过进制转换之后就会发生越界。
-	比如
-		a b 1 1不会超过long long
-		b在运算过程中可能发生越界的问题
-2.给定一个数据a,如果a的某一为最大为x，那么实际上a的进制，最小不能小于x+1。要注意处理。
-```
-
-## 2. Problem
-
-Given a pair of positive integers, for example, 6 and 110, can this equation 6 = 110 be true?  The answer is "yes", if 6 is a decimal number and 110 is a binary number.
-
-Now for any pair of positive integers N1 and N2, your task is to find the radix of one number while that of the other is given.
-
-**Input Specification:**
-
-Each input file contains one test case. Each case occupies a line which contains 4 positive integers:
-N1 N2 tag radix
-Here N1 and N2 each has no more than 10 digits.  A digit is less than 
-its radix and is chosen from the set {0-9, a-z} where 0-9 represent the 
-decimal numbers 0-9, and a-z represent the decimal numbers 10-35.  The 
-last number "radix" is the radix of N1 if "tag" is 1, or of N2 if "tag" 
-is 2. 
-
-**Output Specification:**
-
-For each test case, print in one line the radix of the other number so that the equation N1 = N2 is true.  If the equation is impossible, print "Impossible".  If the solution is not unique, output the smallest possible radix.
-
-Sample Input 1:
-
-```
-6 110 1 10
-```
-
-Sample Output 1:
-
-```
-2
-```
-
-Sample Input 2:
-
-```
-1 ab 1 2
-```
-
-Sample Output 2:
-
-```
-Impossible
-```
-
-------
 
 
+## 4. Code
 
-## 3. Code
+### 4.1 Edit 0:
 
-### 3.1 Edit 0
-
-#### 3.1.1 Algorithm abstraction
+#### 4.1.1 Algorithm abstraction
 
 ```
 
 ```
 
-#### 3.1.2 Notice
+#### 4.1.2 Notice
 
 ```
 
 ```
+
+#### 4.1.3 Code Block
 
 ```C++
 #include <cstdio>
@@ -296,22 +300,25 @@ int main(){
 	else printf("%lld\n",ans);
 	return 0;
 }
-
 ```
 
-### 3.2 Edit 1
 
-#### 3.2.1 Algorithm abstraction
 
-```
+### 4.2 Edit 1:
 
-```
-
-#### 3.2.2 Notice
+#### 4.2.1 Algorithm abstraction
 
 ```
 
 ```
+
+#### 4.2.2 Notice
+
+```
+
+```
+
+#### 4.2.3 Code Block
 
 ```C++
 #include <iostream>
@@ -429,4 +436,14 @@ int main(){
 	return 0;
 }
 ```
+
+
+
+## 5. Summary
+
+```
+注意掌握二分查找的各种变形
+```
+
+
 
