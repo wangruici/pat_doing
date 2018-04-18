@@ -2,7 +2,7 @@
 
 [TOC]
 
-## 1.Abstraction
+## 1.Abstraction:深度优先遍历
 
 ### 1.1 Algorithm and idea
 
